@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "dist",
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssrApp"
+      }
+    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20"
+  }
+}

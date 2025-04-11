@@ -1,0 +1,356 @@
+.leaderboard-container {
+    max-width: 850px;
+    max-height: 80vh;
+    margin: 30px auto 30px 22%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+h1 {
+    color: #acaced;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.381);
+}
+
+
+.leaderboard-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-options button {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-options button.active {
+    background: linear-gradient(135deg, #6868f9, #a768f8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(113, 65, 216, 0.3);
+}
+
+.leaderboard-filters select {
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.leaderboard-filters select option {
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+}
+
+
+.leaderboard-table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 70vh;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+.leaderboard-table-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.leaderboard-table-container::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 5px 0;
+}
+
+.leaderboard-table-container::-webkit-scrollbar-thumb {
+    background: rgba(76, 110, 245, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(76, 110, 245, 0.1);
+    background-clip: padding-box;
+}
+
+.leaderboard-table-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(76, 110, 245, 0.5);
+}
+
+
+.leaderboard-table-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(76, 110, 245, 0.3) transparent;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaderboard-table th {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #acaced;
+}
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.top-three {
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+.first-place {
+    background: rgba(255, 215, 0, 0.15);
+}
+
+.first-place .rank::before {
+    content: "🏆 ";
+}
+
+.second-place {
+    background: rgba(192, 192, 192, 0.15);
+}
+
+.second-place .rank::before {
+    content: "🥈 ";
+}
+
+.third-place {
+    background: rgba(205, 127, 50, 0.15);
+}
+
+.third-place .rank::before {
+    content: "🥉 ";
+}
+
+
+.Beginner { color: #4CAF50; }
+.Novice { color: #8BC34A; }
+.Intermediate { color: #CDDC39; }
+.Advanced { color: #FFEB3B; }
+.Expert { color: #FFC107; }
+.Master { color: #FF9800; }
+.Grandmaster { color: #FF5722; }
+
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #acaced;
+}
+
+
+.error {
+    text-align: center;
+    padding: 30px;
+    color: #ff6b6b;
+}
+
+@media (max-width: 1024px) {
+    .leaderboard-container {
+        margin: 30px auto;
+        width: 85%;
+        max-height: 80vh;
+        margin-top: -10px;
+    }
+    
+   
+    .leaderboard-table-container {
+        max-height: 60vh;
+    }
+    
+   
+    .filter-options {
+        flex-wrap: wrap;
+    }
+    
+   
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 12px;
+    }
+    
+   
+    .user-info {
+        gap: 8px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .leaderboard-container {
+        padding: 20px 15px;
+        margin: 20px auto;
+        border-radius: 25px;
+        max-height: 90vh;
+    }
+    
+    .leaderboard-filters {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 10px;
+    }
+    
+    .leaderboard-table-container {
+        overflow-x: auto;
+    }
+    
+    .leaderboard-table {
+        min-width: 500px;
+    }
+    
+   
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 10px 8px;
+    }
+    
+   
+    .user-info {
+        gap: 6px;
+    }
+    
+    .avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+   
+    .leaderboard-table,
+    .leaderboard-table th,
+    .leaderboard-table td,
+    .user-info,
+    .leaderboard-filters {
+       
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        
+       
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        
+       
+        backface-visibility: hidden;
+        
+       
+        will-change: transform;
+        
+       
+        text-rendering: optimizeLegibility;
+    }
+    
+   
+    .rank::before {
+        display: inline-block;
+        transform: translateZ(0);
+    }
+    
+   
+    .leaderboard-container {
+        backdrop-filter: none;
+        background-color: rgb(0, 0, 0);
+        overflow: visible;
+        z-index: 10;
+    }
+    
+   
+    .filter-options button.active {
+        transform: none;
+        box-shadow: none;
+        border: 2px solid #a768f8;
+    }
+    
+   
+    .leaderboard-filters select,
+    .filter-options button {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    
+   
+    .leaderboard-table-container::after {
+        filter: none;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .leaderboard-container {
+        padding: 15px 10px;
+        margin: 15px auto;
+        border-radius: 20px;
+        width: 90%;
+        max-height: 75vh;
+    }
+    
+   
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 8px 5px;
+        font-size: 0.9rem;
+    }
+    
+   
+    .leaderboard-table-container {
+        position: relative;
+    }
+    
+    .leaderboard-table-container::after {
+        content: "←";
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        color: rgba(255,255,255,0.5);
+        animation: fadeInOut 1.5s infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes fadeInOut {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.8; }
+    }
+}

@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap');
+
+:root { 
+    --background-black: #002e41;
+    --text-grey-light: #B0B0B0;
+    --text-grey-medium: #808080;
+    --text-grey-dark: #404040;
+    --main-color: #8f9eff;
+    
+   
+    --bp-small: 480px; 
+    --bp-medium: 768px;
+    --bp-large: 1024px;
+    --bp-xlarge: 1280px;
+    
+   
+    --space-xs: clamp(0.5rem, 0.5vw, 0.75rem);
+    --space-sm: clamp(0.75rem, 1vw, 1rem);
+    --space-md: clamp(1rem, 2vw, 1.5rem);
+    --space-lg: clamp(1.5rem, 3vw, 2rem);
+    --space-xl: clamp(2rem, 4vw, 3rem);
+    
+   
+    --fs-xs: clamp(0.75rem, 1vw, 0.875rem);
+    --fs-sm: clamp(0.875rem, 1.2vw, 1rem);
+    --fs-md: clamp(1rem, 1.5vw, 1.2rem);
+    --fs-lg: clamp(1.2rem, 2vw, 1.5rem);
+    --fs-xl: clamp(1.5rem, 3vw, 2rem);
+    --fs-xxl: clamp(2rem, 4vw, 3rem);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+
+body {
+    background-color: var(--background-black);
+    color: var(--text-grey-light);
+    flex-grow: 1;
+    padding: 0px;
+    background: url('/sea-quest-background.jpg') no-repeat center center;
+    background-size: cover;
+    color: var(--text-color);
+    overflow: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+
+html {
+    height: -webkit-fill-available;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+
+h1 { font-size: var(--fs-xxl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+h4 { font-size: var(--fs-md); }
+h5, h6 { font-size: var(--fs-sm); }
+
+a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 var(--space-sm);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+button, 
+.btn, 
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+
+.hide-on-mobile {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hide-on-mobile {
+        display: initial;
+    }
+    
+    .show-on-mobile {
+        display: none;
+    }
+}
+
+
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(var(--space-sm), env(safe-area-inset-left));
+        padding-right: max(var(--space-sm), env(safe-area-inset-right));
+        padding-bottom: max(var(--space-sm), env(safe-area-inset-bottom));
+    }
+    
+   
+    @media (min-width: 481px) and (max-width: 768px) {
+        body {
+            padding-left: max(var(--space-md), env(safe-area-inset-left));
+            padding-right: max(var(--space-md), env(safe-area-inset-right));
+            padding-bottom: max(var(--space-md), env(safe-area-inset-bottom));
+        }
+    }
+}
+
+

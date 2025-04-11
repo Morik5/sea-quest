@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+      // ✅ Allow new users to create their own account (without needing `get()`)
+      allow create: if request.auth != null && request.auth.uid == userId;
+
+      // ✅ Allow reading & writing only after the user exists
+      allow read, write: if request.auth != null && (
+        request.auth.uid == userId ||
+        (
+          exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          (
+            get(/databases/$(database)/documents/users/$(request.auth.uid)).data.linkedChild == userId ||
+            get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["teacher", "parent"]
+          )
+        )
+      );
+    }
+
+    // ✅ Achievements: read-only for authenticated users
+    match /achievements/{achievementsId} {
+      allow read: if request.auth != null;
+    }
+
+    // ✅ Sections: public read access for all authenticated users
+    match /sections/{exerciseType}/{document=**} {
+      allow read: if request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "sea-quest",
+    "sea-quest": "sea-quest"
+  },
+  "targets": {},
+  "etags": {}
+}

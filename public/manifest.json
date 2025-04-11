@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "sea-quest",
+  "short_name": "Sea Quest",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "English learning app."
+}

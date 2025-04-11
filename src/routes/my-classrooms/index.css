@@ -1,0 +1,514 @@
+
+:root {
+  --primary: #4c6ef5;
+  --primary-dark: #364fc7;
+  --primary-light: #dbe4ff;
+  --primary-gradient: linear-gradient(135deg, #4c6ef5, #15aabf);
+  --secondary-gradient: linear-gradient(135deg, #ff922b, #f76707);
+  --success: #12b886;
+  --success-light: #d3f9d8;
+  --error: #fa5252;
+  --error-light: #ffe3e3;
+  --neutral: #f1f3f5;
+  --neutral-dark: #dee2e6;
+  --text: #212529;
+  --text-light: #868e96;
+  --white: #ffffff;
+  --accent: #ff922b;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+.student-classrooms-container {
+  max-width: 850px;
+  max-height: 85vh;
+  margin: 18px auto;
+  padding: 40px 20px;
+  background-color: var(--white);
+  border-radius: 35px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: var(--primary-dark);
+  left: 50px;
+}
+
+
+.student-classrooms-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.student-classrooms-container::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 5px 0;
+}
+
+.student-classrooms-container::-webkit-scrollbar-thumb {
+  background: rgba(76, 110, 245, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(76, 110, 245, 0.1);
+  background-clip: padding-box;
+}
+
+.student-classrooms-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(76, 110, 245, 0.5);
+}
+
+
+.student-classrooms-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(76, 110, 245, 0.3) transparent;
+}
+
+
+.student-classrooms-container::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: var(--primary-gradient);
+  opacity: 0.1;
+  border-radius: 50%;
+  z-index: 0;
+  animation: floatBubble 20s infinite alternate ease-in-out;
+}
+
+.student-classrooms-container::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 400px;
+  height: 400px;
+  background: var(--primary-gradient);
+  opacity: 0.1;
+  border-radius: 50%;
+  z-index: 0;
+  animation: floatBubble 25s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatBubble {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translate(-15px, 10px) scale(1.05);
+    opacity: 0.12;
+  }
+  100% {
+    transform: translate(15px, -15px) scale(0.95);
+    opacity: 0.1;
+  }
+}
+
+.student-classrooms-container h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+  z-index: 1;
+}
+
+.student-classrooms-container h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+.actions-bar {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.join-classroom-btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 6px 15px rgba(76, 110, 245, 0.4);
+}
+
+.join-classroom-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.join-classroom-btn:hover::before {
+  left: 100%;
+}
+
+.join-classroom-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(76, 110, 245, 0.5);
+}
+
+.error-message,
+.join-error {
+  background-color: var(--error-light);
+  color: var(--error);
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  font-weight: 500;
+  border-left: 5px solid var(--error);
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--box-shadow);
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--primary);
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.classrooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.classroom-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(219, 228, 255, 0.4);
+}
+
+.classroom-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--primary-gradient);
+}
+
+.classroom-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.classroom-card h3 {
+  margin-top: 10px;
+  color: var(--primary-dark);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.teacher-name {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.classroom-grade {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.classroom-actions {
+  margin-top: 20px;
+}
+
+.view-classroom-btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(76, 110, 245, 0.3);
+}
+
+.view-classroom-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.view-classroom-btn:hover::before {
+  left: 100%;
+}
+
+.view-classroom-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 110, 245, 0.4);
+}
+
+.no-classrooms {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 40px;
+  background-color: var(--neutral);
+  border-radius: var(--border-radius);
+  color: var(--text-light);
+  font-size: 18px;
+  border: 2px dashed var(--neutral-dark);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  position: relative;
+  animation: slideUp 0.4s ease;
+  transform-origin: bottom;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--primary-dark);
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-content h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+.modal-content > p {
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--neutral-dark);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.2);
+  outline: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.cancel-btn {
+  background-color: var(--neutral);
+  border: 1px solid var(--neutral-dark);
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.cancel-btn:hover {
+  background-color: var(--neutral-dark);
+}
+
+.join-btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  box-shadow: 0 4px 10px rgba(76, 110, 245, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.join-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.join-btn:hover::before {
+  left: 100%;
+}
+
+.join-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 110, 245, 0.4);
+}
+
+.join-btn:disabled {
+  background: linear-gradient(135deg, #a5b4fc, #93c5fd);
+  cursor: not-allowed;
+  transform: none;  
+  box-shadow: none;
+}
+
+.join-btn:disabled::before {  
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .student-classrooms-container {
+    margin: 18px auto;
+    width: 90%;
+    max-width: 600px;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    transform: translateX(0);
+  }
+  
+  .student-classrooms-container::before,
+  .student-classrooms-container::after {
+    transform: scale(0.8);
+    opacity: 0.08;
+  }
+}
+ 
+  @media (max-width: 768px) {
+  .student-classrooms-container {
+    left: 0px;
+  }
+
+  .classrooms-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .student-classrooms-container {
+    padding: 30px 15px;
+    margin: 20px auto;
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-classrooms-container {
+    padding: 30px 15px;
+    margin: 20px auto;
+    border-radius: 25px;
+    max-height: 70vh;
+    max-width: 43vh;
+  }
+}

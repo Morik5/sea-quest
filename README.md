@@ -43,7 +43,7 @@ Ačkoliv je aplikace funkční a již otestováná ve škole, tak ještě zdalek
 ## Instalace a spuštění
 
 ```
-git clone https://github.com/Morik5/SeaQuest.git
+git clone https://github.com/Morik5/sea-quest.git
 cd sea-quest
 ```
 npm install

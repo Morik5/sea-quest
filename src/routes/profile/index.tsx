@@ -3,33 +3,9 @@ import { component$, useSignal, useTask$, $, useStylesScoped$ } from "@builder.i
 import { getUserProfile, updateUserAvatar, signOutUser } from "../../services/user"; 
 import { levels } from "../../services/levels";
 import { calculateLevelProgress, getRemainingXP, getLevelTier } from "../../services/levelService";
+import { makeSerializable } from "../../utils/serialization";
 import styles from "./index.css?inline"; 
 
-
-function makeSerializable(obj: any): any {
-  if (!obj) return obj;
-  
-  
-  if (obj.toDate && typeof obj.toDate === 'function') {
-    return obj.toDate().toISOString();
-  }
-  
-  if (Array.isArray(obj)) {
-    return obj.map(makeSerializable);
-  }
-  
-  if (typeof obj === 'object') {
-    const result: Record<string, any> = {};
-    for (const key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        result[key] = makeSerializable(obj[key]);
-      }
-    }
-    return result;
-  }
-  
-  return obj;
-}
 
 export default component$(() => {
 

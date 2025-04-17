@@ -1,6 +1,7 @@
 import { component$, useSignal, $ } from '@builder.io/qwik';
 import { getAnnouncementComments, createComment } from '../../services/classroom';
 import { makeSerializable } from '../../utils/serialization';
+import { formatDate } from '../../utils/helpers';
 
 
 export interface Comment {
@@ -28,45 +29,11 @@ export interface User {
   avatar?: string;
 }
 
-export function formatDate(dateInput: any): string {
-  if (!dateInput) return 'Datum není k dispozici';
-  
-  try {
-    let date;
-    
-    
-    if (dateInput && typeof dateInput.toDate === 'function') {
-      date = dateInput.toDate();
-    } 
-    
-    else if (dateInput && typeof dateInput === 'object' && 'seconds' in dateInput) {
-      date = new Date(dateInput.seconds * 1000);
-    }
-    
-    else if (dateInput instanceof Date) {
-      date = dateInput;
-    }
-    
-    else {
-      date = new Date(dateInput);
-    }
-    
-    if (isNaN(date.getTime())) {
-      return 'Neplatné datum';
-    }
-    
-    const options = { 
-      year: 'numeric', 
-      month: 'numeric', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-    
-    return date.toLocaleString('cs-CZ', options);
-  } catch (error) {
-    return 'Neplatné datum';
+function ensureString(date: Date | string): string {
+  if (date instanceof Date) {
+    return date.toISOString();
   }
+  return String(date);
 }
 
 export const AnnouncementItem = component$<{
@@ -135,7 +102,7 @@ export const AnnouncementItem = component$<{
     <div class="announcement-item">
       <div class="announcement-header">
         <h3>{announcement.title}</h3>
-        <span class="date">{formatDate(announcement.createdAt)}</span>
+        <span class="date">{formatDate(ensureString(announcement.createdAt))}</span>
       </div>
       <div class="announcement-content">{announcement.content}</div>
       <div class="announcement-footer">
@@ -164,7 +131,7 @@ export const AnnouncementItem = component$<{
                           <img src={comment.userAvatar || "/avatars/default.png"} alt={comment.userName} width={24} height={24} />
                           <span>{comment.userName}</span>
                         </div>
-                        <span class="comment-date">{new Date(comment.createdAt).toLocaleDateString()}</span>
+                        <span class="comment-date">{formatDate(ensureString(comment.createdAt))}</span>
                       </div>
                       <div class="comment-content">{comment.content}</div>
                     </div>

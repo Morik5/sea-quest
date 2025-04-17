@@ -2,6 +2,7 @@ import { component$, useStore, $, useStylesScoped$ } from "@builder.io/qwik";
 import { auth, db } from "../../firebase";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { query, collection, where, getDocs, setDoc, doc } from "firebase/firestore";
+import { makeSerializable } from "../../utils/serialization";
 import styles from './index.css?inline';
 
 const ERROR_MESSAGES: Record<string, string> = {
@@ -32,35 +33,6 @@ const generateParentCode = (): string => {
   return parentCode;
 };
 
-
-const convertFirestoreData = (data: any) => {
-  if (!data) return data;
-  
-  const result: any = {};
-  
-  Object.keys(data).forEach(key => {
-    const value = data[key];
-    
-    
-    if (value && value.toDate && typeof value.toDate === 'function') {
-      result[key] = value.toDate().toISOString(); 
-    } 
-    
-    else if (Array.isArray(value)) {
-      result[key] = value;
-    } 
-    
-    else if (value && typeof value === 'object') {
-      result[key] = convertFirestoreData(value);
-    } 
-    
-    else {
-      result[key] = value;
-    }
-  });
-  
-  return result;
-};
 
 export default component$(() => {
 
@@ -140,7 +112,7 @@ export default component$(() => {
         }
 
         
-        const serializedData = convertFirestoreData(childData);
+        const serializedData = makeSerializable(childData);
         state.childStats = serializedData as typeof state.childStats;
 
         
@@ -160,13 +132,13 @@ export default component$(() => {
           const parentCode = generateParentCode();
 
           
-          await setDoc(doc(db, "users", user.uid), {
+          await setDoc(doc(db, "users", user.uid), makeSerializable({
             userId: user.uid,
             name: state.name,
             role: state.role,
             parentCode: parentCode,
             avatar: "/avatars/default.png",
-            createdAt: new Date().toISOString(),
+            createdAt: new Date(),
             experience: 0,
             level: 1,
             perfectScores: 0,
@@ -174,7 +146,7 @@ export default component$(() => {
             achievements: [],
             enrolledClassrooms: [],
             homework_completed: 0
-          });
+          }));
 
           window.location.href = "/";
         } else {

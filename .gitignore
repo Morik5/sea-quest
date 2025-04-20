@@ -44,3 +44,11 @@ lerna-debug.log*
 # Firebase
 functions/server
 functions/node_modules
+
+#env
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local

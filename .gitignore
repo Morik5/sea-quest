@@ -52,3 +52,6 @@ functions/node_modules
 .env.test
 .env.production
 .env*.local
+
+# Cloudflare
+functions/**/*.js

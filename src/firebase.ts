@@ -1,10 +1,9 @@
 import { initializeApp, getApps} from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
-import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
+import { getAuth, setPersistence, inMemoryPersistence } from "firebase/auth";
+import type { Auth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
-
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyClqzaoiqw_OrTC89U_TIZY0E3a9Ub4Mx8",
@@ -18,14 +17,23 @@ const firebaseConfig = {
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
-
+// Initialize Firestore regardless of environment
 const db = getFirestore(app);
-const auth = getAuth(app);
 const storage = getStorage(app);
-setPersistence(auth, browserLocalPersistence).catch(console.error)
-  .then(() => console.log('Auth persistence enabled'))
-  .catch((error) => console.error('Auth persistence error:', error));
 
+// Create a non-initialized auth object for server-side environment
+// This will be properly initialized only in the browser
+const auth: Auth = typeof window !== 'undefined' 
+  ? (() => {
+      const authInstance = getAuth(app);
+      setPersistence(authInstance, inMemoryPersistence)
+        .then(() => console.log('Auth persistence enabled'))
+        .catch((error) => console.error('Auth persistence error:', error));
+      return authInstance;
+    })()
+  : {} as Auth; // Provide an empty object that matches Auth interface for SSR
+
+// Initialize analytics only in browser environment
 let analytics;
 if (typeof window !== 'undefined') {
   isSupported().then((supported) => {
@@ -34,7 +42,10 @@ if (typeof window !== 'undefined') {
     }
   });
 }
+
 export const ensureUserInFirestore = async () => {
+  if (typeof window === 'undefined') return; // Skip on server
+  
   const user = auth.currentUser;
   if (!user) return;
 
@@ -42,7 +53,6 @@ export const ensureUserInFirestore = async () => {
   const userSnap = await getDoc(userRef);
 
   if (!userSnap.exists()) {
-
     await setDoc(userRef, {
       name: user.displayName || "New User",
       email: user.email,
@@ -52,8 +62,6 @@ export const ensureUserInFirestore = async () => {
     });
   }
 };
-
-
 
 export { db, analytics, auth, storage };
 export default app;

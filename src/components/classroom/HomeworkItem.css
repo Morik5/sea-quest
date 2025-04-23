@@ -1,0 +1,158 @@
+.homework-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+    border-left: 4px solid #4caf50;
+    margin-bottom: 20px;
+    color: #364fc7;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .homework-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .homework-item.past-due {
+    border-left: 4px solid #ff9800;
+  }
+  
+  .homework-header {
+    cursor: pointer;
+    padding-bottom: 10px;
+  }
+  
+  .homework-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .homework-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #364fc7;
+    font-size: 20px;
+  }
+  
+  .homework-status {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .homework-status span {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .completed-badge {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .marked-by-teacher-badge {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .pending-badge {
+    background-color: #ffc107;
+    color: #333;
+  }
+  
+.late-badge {
+    background-color: #ff5722;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    line-height: 1;
+}
+  
+  .homework-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .due-date {
+    font-style: italic;
+  }
+  
+  .expand-icon {
+    color: #2196F3;
+  }
+  
+  .homework-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+  
+  .homework-description {
+    white-space: pre-line;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  /* For attachments if needed */
+  .attachments-section {
+    margin-top: 15px;
+  }
+  
+  .attachments-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .attachment-item i {
+    color: #2196F3;
+  }
+  
+  /* Submit homework section */
+  .submit-homework-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .submit-button:hover:not(:disabled) {
+    background-color: #45a049;
+  }
+  
+  .submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }

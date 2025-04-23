@@ -1,4 +1,5 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useStylesScoped$ } from '@builder.io/qwik';
+import styles from './StudentsList.css?inline';
 
 export interface Student {
   id: string;
@@ -10,6 +11,8 @@ export interface Student {
 }
 
 export const StudentsList = component$<{ students: Student[] }>(({ students }) => {
+
+  useStylesScoped$(styles);
   return (
     <div class="students-list">
       {students.length > 0 ? (

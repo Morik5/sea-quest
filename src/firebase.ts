@@ -5,14 +5,15 @@ import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth"
 import { getStorage } from "firebase/storage";
 
 
+
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyClqzaoiqw_OrTC89U_TIZY0E3a9Ub4Mx8",
+  authDomain: "sea-quest.firebaseapp.com",
+  projectId: "sea-quest",
+  storageBucket: "sea-quest.appspot.com",
+  messagingSenderId: "417655952102",
+  appId: "1:417655952102:web:9e0e6a372ac81435f56127",
+  measurementId: "G-P095Q32X2X"
 };
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);

@@ -1,6 +1,7 @@
 
 .login-container {
-    margin-top: -20px;
+    margin-top: 0px;
+    margin-left: -15px;
     width: 100vw;
     height: 100vh;
     display: flex;

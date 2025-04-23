@@ -1,6 +1,8 @@
-import { component$, useSignal } from '@builder.io/qwik';
+import { component$, useSignal, useStylesScoped$ } from '@builder.io/qwik';
+import styles from './HomeworkItem.css?inline';
 
 
+//smazat formatDate a nahradit
 function formatDate(dateInput: any): string {
   if (!dateInput) return 'Datum není k dispozici';
   
@@ -62,6 +64,9 @@ export const HomeworkItem = component$<{
   isStudent?: boolean;
   isInformativeOnly?: boolean;
 }>(({ homework, isStudent = false}) => {
+
+  useStylesScoped$(styles);
+
   const isExpanded = useSignal(false);
   
   console.log('Homework dueDate:', homework.dueDate);

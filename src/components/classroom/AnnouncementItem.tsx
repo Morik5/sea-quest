@@ -2,7 +2,8 @@ import { component$, useSignal, $ } from '@builder.io/qwik';
 import { getAnnouncementComments, createComment } from '../../services/classroom';
 import { makeSerializable } from '../../utils/serialization';
 import { formatDate } from '../../utils/helpers';
-
+import { useStylesScoped$ } from '@builder.io/qwik';
+import styles from './AnnouncementItem.css?inline';
 
 export interface Comment {
   id: string;
@@ -41,6 +42,7 @@ export const AnnouncementItem = component$<{
   teacherName?: string;
   currentUser: User;
 }>(({ announcement, teacherName, currentUser }) => {
+  useStylesScoped$(styles);
   const showComments = useSignal(false);
   const comments = useSignal<Comment[]>([]);
   const isLoadingComments = useSignal(false);
@@ -128,7 +130,7 @@ export const AnnouncementItem = component$<{
                     <div key={comment.id} class="comment-item">
                       <div class="comment-header">
                         <div class="comment-user">
-                          <img src={comment.userAvatar || "/avatars/default.png"} alt={comment.userName} width={24} height={24} />
+                          <img src={comment.userAvatar || "/avatars/default.png"} alt={comment.userName} width={28} height={28} />
                           <span>{comment.userName}</span>
                         </div>
                         <span class="comment-date">{formatDate(ensureString(comment.createdAt))}</span>
@@ -147,7 +149,7 @@ export const AnnouncementItem = component$<{
                   placeholder="Napište komentář..."
                   value={commentText.value}
                   onInput$={(e) => commentText.value = (e.target as HTMLTextAreaElement).value}
-                  rows={2}
+                  rows={3}
                 ></textarea>
                 <button 
                   onClick$={submitComment} 

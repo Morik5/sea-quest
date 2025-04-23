@@ -13,7 +13,7 @@
   --neutral: #f1f3f5;
   --neutral-dark: #dee2e6;
   --text: #212529;
-  --text-light: #868e96;
+  --text-light: black;
   --white: #ffffff;
   --accent: #ff922b;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -40,7 +40,7 @@
   max-height: 80vh;
   margin: 20px auto 20px 22%;
   padding: 40px 20px;
-  background-color: var(--white);
+  background-color: white;
   border-radius: 35px;
   box-shadow: var(--card-shadow);
   position: relative;
@@ -51,6 +51,7 @@
   flex-direction: column;
   align-items: center;
   z-index: 1;
+  background-color: var(--white);
 }
 
 
@@ -142,7 +143,7 @@
 
 .stat-label {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: var(--primary);
 }
 
 
@@ -281,7 +282,7 @@
   box-shadow: var(--box-shadow);
   white-space: nowrap;
   text-align: center;
-  color: var(--white);
+  color: var(--text);
 }
 
 
@@ -384,28 +385,13 @@
 .unlocked-date {
   margin-top: 10px;
   font-size: 0.8rem;
-  color: var(--text-light);
+  color: var(--unlocked);
   background-color: rgba(76, 110, 245, 0.08);
   padding: 5px 10px;
   border-radius: 15px;
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.achievement-rarity {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 15px;
-  background-color: var(--white);
-  box-shadow: var(--box-shadow);
-  white-space: nowrap;
-  text-align: center;
 }
 
 .reward {
@@ -423,27 +409,27 @@
 }
 
 .common .achievement-rarity {
-  color: var(--common-color);
+  
   background-color: rgba(120, 144, 156, 0.4);
 }
 
 .uncommon .achievement-rarity {
-  color: var(--uncommon-color);
+  
   background-color: rgba(76, 175, 80, 0.4);
 }
 
 .rare .achievement-rarity {
-  color: var(--rare-color);
+  
   background-color: rgba(33, 150, 243, 0.4);
 }
 
 .epic .achievement-rarity {
-  color: var(--epic-color);
+  
   background-color: rgba(156, 39, 176, 0.4);
 }
 
 .legendary .achievement-rarity {
-  color: var(--legendary-color);
+  
   background-color: rgba(255, 152, 0, 0.4);
 }
 
@@ -466,6 +452,7 @@
     margin: 15px auto;
     padding: 30px 20px;
     max-height: 75vh;
+    background-color: var(--white);
   }
   
   .achievements-grid {

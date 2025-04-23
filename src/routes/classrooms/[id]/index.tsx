@@ -18,7 +18,7 @@ import {
 } from "../../../services/classroom";
 import { formatDate } from "../../../utils/helpers";
 import { makeSerializable } from "../../../utils/serialization";
-import AnnouncementItem from "../../../components/AnnouncementItem";
+import { AnnouncementItem } from "../../../components/classroom/AnnouncementItem";
 import TabMenu from '../../../components/classroom/TabMenu';
 import TestsView from '../../../components/classroom/tests/TestsView';
 import { query, collection, getDocs, where } from "firebase/firestore";
@@ -848,7 +848,7 @@ const handleMarkAsDone = $(async (studentId: string) => {
               
               <AnnouncementItem 
                 announcement={selectedAnnouncement.value}
-                userProfile={user.value}
+                currentUser={user.value}
               />
             </div>
           )}

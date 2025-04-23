@@ -1,8 +1,8 @@
-import { component$, useSignal, useTask$, $, useStylesScoped$ } from "@builder.io/qwik";
+import { component$, useSignal, useTask$, $ } from "@builder.io/qwik";
 import { formatDate } from "../utils/helpers";
 import { getAnnouncementComments, createComment } from "../services/classroom";
 import { makeSerializable } from "../utils/serialization";
-import styles from "./AnnouncementItem.css?inline"; 
+
 
 interface AnnouncementItemProps {
   announcement: any;
@@ -11,7 +11,7 @@ interface AnnouncementItemProps {
 
 export default component$<AnnouncementItemProps>(({ announcement, userProfile }) => {
 
-  useStylesScoped$(styles);
+  
 
   const comments = useSignal<any[]>([]);
   const showComments = useSignal(false);

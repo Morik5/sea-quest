@@ -27,6 +27,46 @@
     --fs-lg: clamp(1.2rem, 2vw, 1.5rem);
     --fs-xl: clamp(1.5rem, 3vw, 2rem);
     --fs-xxl: clamp(2rem, 4vw, 3rem);
+    /* Primary colors */
+  --primary: #4c6ef5;
+  --primary-dark: #364fc7;
+  --primary-light: #dbe4ff;
+  --secondary: #15aabf;
+  --white: #ffffff;
+  
+  /* Additional colors */
+  --background: #f5f6fa;
+  --card-bg: #ffffff;
+  --text: #212529;
+  --text-secondary: #636e72;
+  --border: #dfe6e9;
+  --accent: #ff922b;
+  
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #4c6ef5, #15aabf);
+  --secondary-gradient: linear-gradient(135deg, #ff922b, #f76707);
+  
+  /* Feedback colors */
+  --success: #12b886;
+  --success-light: #d3f9d8;
+  --error: #fa5252;
+  --error-light: #ffe3e3;
+  --neutral: #f1f3f5;
+  --neutral-dark: #dee2e6;
+  
+  /* Common effects */
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --xp-color: #ffd43b;
+  --xp-glow: rgba(255, 212, 59, 0.5);
+  --unlocked: rgb(53, 53, 53);
+  --correct-color: #12b886;
+  --wrong-place-color: #ffd43b; 
+  --wrong-color: #495057;
+  
 }
 
 html, body {

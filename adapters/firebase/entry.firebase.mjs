@@ -3,4 +3,5 @@ import qwikCityPlan from '@qwik-city-plan';
 import { manifest } from '@qwik-city-manifest';
 import render from './entry.ssr';
 
-export const app = createQwikCity({ render, qwikCityPlan, manifest });
+export const onRequest = createQwikCity({ render, qwikCityPlan, manifest });
+export { onRequest as app };

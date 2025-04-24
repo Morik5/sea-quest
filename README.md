@@ -1,5 +1,7 @@
 # SeaQuest: Vzdělávací Aplikace 🚀
 
+## Link na aplikaci
+https://sea-quest.web.app/
 ## O Projektu
 
 SeaQuest je vzdělávací aplikace, která propojuje učitele, žáky a rodiče. Nabízí interaktivní výukové nástroje a online testování. Aplikace umožňuje vytváření virtuálních tříd, spravovat úkoly a sledování pokroku studentů.
